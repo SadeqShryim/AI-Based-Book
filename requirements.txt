@@ -15,3 +15,5 @@ langchain-ollama==0.3.3
 # fixes for Streamlit deployment
 langchain-community
 faiss-cpu
+
+langchain-huggingface
