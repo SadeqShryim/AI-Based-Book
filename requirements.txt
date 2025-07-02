@@ -1,19 +1,15 @@
 # --- core ---
 streamlit==1.34.0
-#langchain==0.2.2
 ollama==0.5.1
 streamlit-webrtc==0.63.3
-python-dotenv>=1.0
+python-dotenv==1.0.1
 
-# optional UI sugar
+# UI
 streamlit-chat==0.1.1
 
-# Ensure compatibility between langchain_ollama and core
+# LangChain ecosystem (pinned versions!)
 langchain-core==0.3.66
 langchain-ollama==0.3.3
-
-# fixes for Streamlit deployment
-langchain-community
-faiss-cpu
-
-langchain-huggingface
+langchain-community==0.0.30
+langchain-huggingface==0.0.6
+faiss-cpu==1.7.4
