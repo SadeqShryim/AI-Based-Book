@@ -1,0 +1,13 @@
+# --- core ---
+streamlit==1.34.0
+#langchain==0.2.2
+ollama==0.5.1
+streamlit-webrtc==0.63.3
+python-dotenv>=1.0
+
+# optional UI sugar
+streamlit-chat==0.1.1
+
+# Ensure compatibility between langchain_ollama and core
+langchain-core==0.3.66
+langchain-ollama==0.3.3
