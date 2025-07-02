@@ -1,4 +1,4 @@
-from langchain_community.llms import OllamaLLM
+from langchain_ollama import OllamaLLM
 from langchain_community.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.memory import ConversationBufferMemory
@@ -21,7 +21,7 @@ memory = ConversationBufferMemory(
 )
 
 # === LLM ===
-llm = OllamaLLM(model="phi3")
+llm = OllamaLLM(model="phi3", options={"num_gpu": 0})
 
 # === Chain ===
 def retrieve_and_format(inputs):
