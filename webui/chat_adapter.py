@@ -1,28 +1,29 @@
+from langchain_community.llms import OllamaLLM
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.memory import ConversationBufferMemory
 from langchain_core.runnables import RunnableLambda
-from langchain_ollama import OllamaLLM
-
 import os
+
 from prompt_templates import james_clear_prompt
 
-# Load vectorstore
+# === Vector Store ===
 persist_dir = os.path.join("..", "data", "vectorstore")
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 vectorstore = FAISS.load_local(persist_dir, embeddings, allow_dangerous_deserialization=True)
-
 retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 4})
 
+# === Memory ===
 memory = ConversationBufferMemory(
     memory_key="chat_history",
     input_key="question",
     return_messages=True
 )
 
-# ✅ Use local phi3 model via Ollama — this was working before
+# === LLM ===
 llm = OllamaLLM(model="phi3")
 
+# === Chain ===
 def retrieve_and_format(inputs):
     docs = retriever.invoke(inputs["question"])
     context = "\n\n".join([doc.page_content for doc in docs])
