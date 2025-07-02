@@ -11,3 +11,7 @@ streamlit-chat==0.1.1
 # Ensure compatibility between langchain_ollama and core
 langchain-core==0.3.66
 langchain-ollama==0.3.3
+
+# fixes for Streamlit deployment
+langchain-community
+faiss-cpu
