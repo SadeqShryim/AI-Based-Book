@@ -1,4 +1,4 @@
-from langchain_ollama import OllamaLLM
+from langchain.chat_models import ChatOpenAI
 from langchain_community.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.memory import ConversationBufferMemory
@@ -21,7 +21,11 @@ memory = ConversationBufferMemory(
 )
 
 # === LLM ===
-llm = OllamaLLM(model="phi3", options={"num_gpu": 0})
+llm = ChatOpenAI(
+    model="gpt-3.5-turbo",
+    temperature=0.7,
+    max_tokens=512
+)
 
 # === Chain ===
 def retrieve_and_format(inputs):
